@@ -6,6 +6,9 @@ from math import radians, cos, sin, asin, sqrt
 from difflib import get_close_matches
 from flask import Flask, request, jsonify
 from geopy.geocoders import Nominatim
+import warnings
+warnings.filterwarnings("ignore", message="X does not have valid feature names")
+
 
 # Initialize Flask app
 app = Flask(__name__)
