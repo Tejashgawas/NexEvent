@@ -102,11 +102,9 @@ def recommend():
 
         # Normalize distance and user rating count
         try:
-            dist_scaled = scaler.transform([[row['rating'], row['userRatingCount'], dist]])[0][2]
-            count_scaled = scaler.transform([[row['rating'], row['userRatingCount'], dist]])[0][1]
+            dist_scaled, count_scaled = scaler.transform([[row['rating'], row['userRatingCount'], dist]])[0][2], scaler.transform([[row['rating'], row['userRatingCount'], dist]])[0][1]
         except:
-            dist_scaled = 0
-            count_scaled = 0
+            dist_scaled, count_scaled = 0, 0
 
         # Use correct type encoding
         type_idx = final_event_type_encoded if row['category'] == 'venue' else unknown_type_index
@@ -143,7 +141,7 @@ def recommend():
 
     df_result = pd.DataFrame(records)
     df_result['normalized_score'] = (
-        (df_result['score'] - df_result['score'].min()) /
+        (df_result['score'] - df_result['score'].min()) / 
         (df_result['score'].max() - df_result['score'].min())
     ).round(3)
 
