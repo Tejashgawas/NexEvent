@@ -95,8 +95,8 @@ def recommend():
         cat_idx = category_encoder.transform([cat])[0]
 
         dist = haversine(lat, lon, row['latitude'], row['longitude'])
-        dist_s = scaler.transform([[dist]])[0][0]
-        count_s = scaler.transform([[row['userRatingCount']]])[0][0]
+        dist_s = scaler.transform(pd.DataFrame({'distance': [dist]}))[0][0]
+        count_s = scaler.transform(pd.DataFrame({'userRatingCount': [row['userRatingCount']]}))[0][0]
 
         # Determine type index for venues or set to unknown for others
         type_idx = evt_idx if cat == 'venue' else unknown_type_index
@@ -142,4 +142,5 @@ def recommend():
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
+
