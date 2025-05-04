@@ -1,9 +1,0 @@
-gunicorn
-tensorflow==2.15.0
-pandas
-numpy
-scikit-learn
-geopy
-joblib
-Flask==2.2.3
-Werkzeug==2.2.3
