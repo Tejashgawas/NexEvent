@@ -12,7 +12,8 @@ from geopy.exc import GeocoderUnavailable, GeopyError
 from time import sleep
 from geopy.distance import geodesic
 import googlemaps
-GMAPS = googlemaps.Client(key=os.environ["AIzaSyBO3z3IJk55Q5J-Qfye3ENuTFi6neipEjA"])
+GMAPS = googlemaps.Client(key=os.environ["GMAPS_API_KEY"])  
+
 
 location_cache = {}
 
