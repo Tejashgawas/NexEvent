@@ -53,6 +53,10 @@ def haversine(lat1, lon1, lat2, lon2):
     a = sin(dlat/2)**2 + cos(lat1)*cos(lat2)*sin(dlon/2)**2
     return 6371 * 2 * asin(sqrt(a))
 
+@app.route('/')
+def home():
+    return "AI Model API is up and running!"
+
 @app.route('/recommend', methods=['POST'])
 def recommend():
     data = request.get_json()
