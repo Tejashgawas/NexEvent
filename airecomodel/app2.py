@@ -1,4 +1,5 @@
 # app.py (updated loading and scaling)
+import os
 import joblib
 import pandas as pd
 import numpy as np
